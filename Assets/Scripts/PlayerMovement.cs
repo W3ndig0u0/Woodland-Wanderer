@@ -29,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
   float jumpingSpeedThreshold = 7f;
   bool fallingFast = false;
 
+  //!Particle
+  private ParticleSystem jumpParticle;
+  private ParticleSystem jumpPartDark;
+  private ParticleSystem damagePart;
+
 
   private int coins = 0;
   private int health = 3;
@@ -37,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
 
   void Start()
   {
+    jumpParticle = GameObject.Find("JumpPart").GetComponent<ParticleSystem>();
+    jumpPartDark = GameObject.Find("JumpPartDark").GetComponent<ParticleSystem>();
+    damagePart = GameObject.Find("DamagePart").GetComponent<ParticleSystem>();
+
     rb = GetComponent<Rigidbody2D>();
     jumpsLeft = maxJumps;
   }
@@ -159,18 +168,27 @@ public class PlayerMovement : MonoBehaviour
   // !Reset when landing
   void OnCollisionEnter2D(Collision2D col)
   {
-    inAir = false;
-    jumpsLeft = maxJumps;
-    dashLeft++;
-    fallingFast = false;
+
+    if (col.gameObject.CompareTag("Ground"))
+    {
+      //! fix if on ground
+      jumpParticle.Play();
+      jumpPartDark.Play();
+
+      inAir = false;
+      jumpsLeft = maxJumps;
+      dashLeft++;
+      fallingFast = false;
+    }
     // isDashing = false;
 
 
     if (col.gameObject.CompareTag("Enemy"))
     {
       health--;
-      Destroy(col.gameObject);
+      //Destroy(col.gameObject);
       Debug.Log("hp: " + health);
+      damagePart.Play();
     }
   }
 }
