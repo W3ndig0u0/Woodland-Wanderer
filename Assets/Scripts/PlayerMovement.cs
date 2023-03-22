@@ -176,9 +176,9 @@ public class PlayerMovement : MonoBehaviour
       jumpPartDark.Play();
 
       inAir = false;
+      fallingFast = false;
       jumpsLeft = maxJumps;
       dashLeft++;
-      fallingFast = false;
     }
     // isDashing = false;
 
@@ -189,6 +189,7 @@ public class PlayerMovement : MonoBehaviour
       //Destroy(col.gameObject);
       Debug.Log("hp: " + health);
       damagePart.Play();
+      fallingFast = false;
     }
   }
 }
