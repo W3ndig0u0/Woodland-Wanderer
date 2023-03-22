@@ -11,9 +11,8 @@ public class PlayerMovement : MonoBehaviour
   // !Dash
   private float dashSpeed = 120f;
   private bool isDashing = false;
-  private float dashTimer = 0;
-  public GameObject dashRange;
-
+  private float dashLeft = 1;
+  public bool dashRange;
 
   // !Jump
   private float jump = 15f;
@@ -29,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
   float fallingThreshold = -7f;
   float jumpingSpeedThreshold = 7f;
   bool fallingFast = false;
-  
 
 
   private int coins = 0;
@@ -100,8 +98,8 @@ public class PlayerMovement : MonoBehaviour
     if (rb.velocity.y > jumpingSpeedThreshold)
     {
       fallingFast = false;
-
     }
+
     else if (rb.velocity.y < fallingThreshold)
     {
       fallingFast = true;
@@ -119,45 +117,57 @@ public class PlayerMovement : MonoBehaviour
     {
       rb.position = Vector2.Lerp(rb.position, negativeDashOffset, 6f * Time.deltaTime);
       isDashing = true;
+      dashLeft--;
     }
 
     // ?Går genom marken
     else if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.S) && inAir)
     {
       rb.position = Vector2.Lerp(rb.position, downDashOffset, 6f * Time.deltaTime);
+      dashLeft--;
       isDashing = true;
     }
 
     else if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.D))
     {
       rb.position = Vector2.Lerp(rb.position, dashOffset, 6f * Time.deltaTime);
+      dashLeft--;
       isDashing = true;
     }
 
   }
 
-  private void checkHp(){
-    if (health <= 0 ){
-      Destroy(this);
+  private void checkHp()
+  {
+    if (health <= 0)
+    {
+      Destroy(this.gameObject);
     }
   }
+
+  private void OnTriggerEnter2D(Collider2D col)
+  {
+    if (col.gameObject.CompareTag("Coin"))
+    {
+      coins++;
+      Destroy(col.gameObject);
+      Debug.Log("money: " + coins);
+    }
+  }
+
 
   // !Reset when landing
   void OnCollisionEnter2D(Collision2D col)
   {
     inAir = false;
     jumpsLeft = maxJumps;
+    dashLeft++;
     fallingFast = false;
     // isDashing = false;
 
 
-    if (col.gameObject.CompareTag("Coin")){ 
-      coins++;
-      Destroy(col.gameObject);
-      Debug.Log("money: " +coins);
-    }
-
-    if (col.gameObject.CompareTag("Enemy")){
+    if (col.gameObject.CompareTag("Enemy"))
+    {
       health--;
       Destroy(col.gameObject);
       Debug.Log("hp: " + health);
