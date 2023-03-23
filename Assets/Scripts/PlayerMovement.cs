@@ -1,31 +1,31 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
   // !Movement
-  private float moveSpeed = 10f;
+  private float moveSpeed = 9f;
   private float movementX;
+  public float acceleration, deacceleration;
 
   // !Dash
-  private float dashSpeed = 120f;
+  private float dashSpeed = 240f;
   private bool isDashing = false;
   private float dashLeft = 1;
-  public bool dashRange;
 
   // !Jump
-  private float jump = 15f;
-  public int maxJumps = 2;
+  private float jump = 80f;
+  public int maxJumps = 1;
   private int jumpsLeft;
   private bool inAir = false;
+
 
   // !Scaling
   public Vector3 ScalePeak;
   public Vector3 ScaleDown;
   private Vector3 ScaleNormal = new Vector3(1f, 1f, 1f);
   public float scalingRate;
-  float fallingThreshold = -7f;
   float jumpingSpeedThreshold = 7f;
   bool fallingFast = false;
 
@@ -61,22 +61,87 @@ public class PlayerMovement : MonoBehaviour
     checkHp();
   }
 
+
   private void PlayerSideMovement()
   {
     movementX = Input.GetAxisRaw("Horizontal");
-    rb.velocity = new Vector2(movementX * moveSpeed, rb.velocity.y);
-  }
 
+    // ?Direkt movement, ingen force
+    // rb.velocity = new Vector2(movementX * moveSpeed, rb.velocity.y);
+
+    // !movement med force
+    float targetSpeed = movementX * moveSpeed;
+    float speedDiff = targetSpeed - rb.velocity.x;
+    float velocityPower = 1.20f;
+    float accelerationSpeed = (Mathf.Abs(targetSpeed) > 0.05f) ? acceleration : deacceleration;
+    float movementSpeed = Mathf.Pow(Mathf.Abs(speedDiff) * accelerationSpeed, velocityPower) * Mathf.Sign(speedDiff);
+    rb.AddForce(movementSpeed * Vector2.right);
+
+    // !Bromsar spelaren när den vänder
+    if (!inAir && Mathf.Abs(movementX) < 0.01f)
+    {
+      float amount = Mathf.Min(Mathf.Abs(rb.velocity.x), MathF.Abs(0.3f));
+      amount *= MathF.Sign(rb.velocity.x);
+      rb.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
+    }
+
+  }
 
   private void JumpPlayer()
   {
 
     if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
     {
+      // ?Direkt movement, ingen force
+      // rb.velocity = new Vector2(rb.velocity.y, jump);
+      rb.AddForce((jump * Vector2.up) * 2, ForceMode2D.Impulse);
       jumpsLeft--;
-      rb.velocity = new Vector2(rb.velocity.y, jump);
+
       inAir = true;
     }
+  }
+
+  private void DashCheck()
+  {
+
+    Vector2 dashOffset = new Vector2(rb.position.x + dashSpeed, rb.position.y);
+    Vector2 negativeDashOffset = new Vector2(rb.position.x - dashSpeed, rb.position.y);
+    Vector2 downDashOffset = new Vector2(rb.position.x, rb.position.y - (dashSpeed * 0.5f));
+
+    if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.A) && dashLeft > 0 && inAir || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.A) && dashLeft > 0 && inAir)
+    {
+
+      rb.MovePosition(rb.position + negativeDashOffset * 10f * Time.deltaTime);
+
+      // rb.AddForce((dashSpeed * Vector2.left) * 3, ForceMode2D.Impulse);
+      isDashing = true;
+      dashLeft--;
+    }
+
+    // ?Går genom marken
+    else if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.S) && dashLeft > 0 && inAir || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.S) && inAir && dashLeft > 0)
+    {
+      rb.MovePosition(rb.position + downDashOffset * 10f * Time.deltaTime);
+      // rb.AddForce((dashSpeed * Vector2.down) * 3, ForceMode2D.Impulse);
+
+      dashLeft--;
+      isDashing = true;
+    }
+
+    else if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.D) && dashLeft > 0 && inAir || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.D) && dashLeft > 0 && inAir)
+    {
+      rb.MovePosition(rb.position + dashOffset * 10f * Time.deltaTime);
+      // rb.AddForce((dashSpeed * Vector2.right) * 3, ForceMode2D.Impulse);
+
+      dashLeft--;
+      isDashing = true;
+    }
+
+  }
+
+  private void FallingSpeedCheck()
+  {
+    fallingFast = (rb.velocity.y > jumpingSpeedThreshold) ? false : true;
   }
 
   // !Strech and squash
@@ -97,51 +162,6 @@ public class PlayerMovement : MonoBehaviour
     if (!inAir)
     {
       transform.localScale = Vector3.Lerp(transform.localScale, ScaleNormal, 7f * Time.deltaTime);
-    }
-
-  }
-
-  private void FallingSpeedCheck()
-  {
-
-    if (rb.velocity.y > jumpingSpeedThreshold)
-    {
-      fallingFast = false;
-    }
-
-    else if (rb.velocity.y < fallingThreshold)
-    {
-      fallingFast = true;
-    }
-
-  }
-  private void DashCheck()
-  {
-
-    Vector2 dashOffset = new Vector2(rb.position.x + dashSpeed, rb.position.y);
-    Vector2 negativeDashOffset = new Vector2(rb.position.x - dashSpeed, rb.position.y);
-    Vector2 downDashOffset = new Vector2(rb.position.x, rb.position.y - dashSpeed);
-
-    if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.A))
-    {
-      rb.position = Vector2.Lerp(rb.position, negativeDashOffset, 6f * Time.deltaTime);
-      isDashing = true;
-      dashLeft--;
-    }
-
-    // ?Går genom marken
-    else if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.S) && inAir)
-    {
-      rb.position = Vector2.Lerp(rb.position, downDashOffset, 6f * Time.deltaTime);
-      dashLeft--;
-      isDashing = true;
-    }
-
-    else if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.D))
-    {
-      rb.position = Vector2.Lerp(rb.position, dashOffset, 6f * Time.deltaTime);
-      dashLeft--;
-      isDashing = true;
     }
 
   }
@@ -178,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
       inAir = false;
       fallingFast = false;
       jumpsLeft = maxJumps;
-      dashLeft++;
+      dashLeft = 1;
     }
     // isDashing = false;
 
