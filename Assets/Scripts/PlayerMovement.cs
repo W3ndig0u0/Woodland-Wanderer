@@ -5,29 +5,26 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
   // !Movement
-  private float moveSpeed = 9f;
+  private float moveSpeed = 2.5f;
   private float movementX;
-  public float acceleration, deacceleration;
+  private bool isFacingRight = false;
 
   // !Dash
-  private float dashSpeed = 240f;
+  private float dashPower = 17f;
+  private float dashingTime = 0.2f;
+  private float dashCoolDown = 1f;
   private bool isDashing = false;
-  private float dashLeft = 1;
+  private bool canDash = true;
+  [SerializeField] private TrailRenderer trail;
+
 
   // !Jump
-  private float jump = 80f;
+  private float jump = 7f;
   public int maxJumps = 1;
   private int jumpsLeft;
   private bool inAir = false;
-
-
-  // !Scaling
-  public Vector3 ScalePeak;
-  public Vector3 ScaleDown;
-  private Vector3 ScaleNormal = new Vector3(1f, 1f, 1f);
-  public float scalingRate;
-  float jumpingSpeedThreshold = 7f;
-  bool fallingFast = false;
+  [SerializeField] private Transform groundCheck;
+  [SerializeField] private LayerMask groundLayer;
 
   //!Particle
   private ParticleSystem jumpParticle;
@@ -42,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
 
   void Start()
   {
-    jumpParticle = GameObject.Find("JumpPart").GetComponent<ParticleSystem>();
-    jumpPartDark = GameObject.Find("JumpPartDark").GetComponent<ParticleSystem>();
-    damagePart = GameObject.Find("DamagePart").GetComponent<ParticleSystem>();
+    //jumpParticle = GameObject.Find("JumpPart").GetComponent<ParticleSystem>();
+    //jumpPartDark = GameObject.Find("JumpPartDark").GetComponent<ParticleSystem>();
+    //damagePart = GameObject.Find("DamagePart").GetComponent<ParticleSystem>();
 
     rb = GetComponent<Rigidbody2D>();
     jumpsLeft = maxJumps;
@@ -53,29 +50,58 @@ public class PlayerMovement : MonoBehaviour
 
   void Update()
   {
+    CheckHp();
+
+    if (isDashing)
+    {
+      return;
+    }
     PlayerSideMovement();
-    FallingSpeedCheck();
     JumpPlayer();
-    ResizePlayerJump();
     DashCheck();
-    checkHp();
+    Flip();
+    movementX = Input.GetAxisRaw("Horizontal");
+  }
+
+  void FixedUpdate()
+  {
+
+    if (isDashing)
+    {
+      return;
+    }
+
+    // ?Direkt movement, ingen force
+    rb.velocity = new Vector2(movementX * moveSpeed, rb.velocity.y);
+  }
+
+  private void Flip()
+  {
+    if (isFacingRight && movementX < 0f || !isFacingRight && movementX > 0f)
+    {
+      isFacingRight = !isFacingRight;
+      Vector3 localScale = transform.localScale;
+      localScale.x *= -1f;
+      transform.localScale = localScale;
+    }
+  }
+
+  private bool isGrounded()
+  {
+    return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
   }
 
 
   private void PlayerSideMovement()
   {
-    movementX = Input.GetAxisRaw("Horizontal");
-
-    // ?Direkt movement, ingen force
-    // rb.velocity = new Vector2(movementX * moveSpeed, rb.velocity.y);
 
     // !movement med force
-    float targetSpeed = movementX * moveSpeed;
-    float speedDiff = targetSpeed - rb.velocity.x;
-    float velocityPower = 1.20f;
-    float accelerationSpeed = (Mathf.Abs(targetSpeed) > 0.05f) ? acceleration : deacceleration;
-    float movementSpeed = Mathf.Pow(Mathf.Abs(speedDiff) * accelerationSpeed, velocityPower) * Mathf.Sign(speedDiff);
-    rb.AddForce(movementSpeed * Vector2.right);
+    //float targetSpeed = movementX * moveSpeed;
+    //float speedDiff = targetSpeed - rb.velocity.x;
+    //float velocityPower = 1.20f;
+    //float accelerationSpeed = (Mathf.Abs(targetSpeed) > 0.05f) ? acceleration : deacceleration;
+    //float movementSpeed = Mathf.Pow(Mathf.Abs(speedDiff) * accelerationSpeed, velocityPower) * Mathf.Sign(speedDiff);
+    //rb.AddForce(movementSpeed * Vector2.right);
 
     // !Bromsar spelaren när den vänder
     if (!inAir && Mathf.Abs(movementX) < 0.01f)
@@ -90,88 +116,59 @@ public class PlayerMovement : MonoBehaviour
   private void JumpPlayer()
   {
 
-    if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
+    if (isDashing)
+    {
+      return;
+    }
+
+    if (Input.GetButtonDown("Jump") && jumpsLeft > 0 && isGrounded())
     {
       // ?Direkt movement, ingen force
-      // rb.velocity = new Vector2(rb.velocity.y, jump);
-      rb.AddForce((jump * Vector2.up) * 2, ForceMode2D.Impulse);
+      rb.velocity = new Vector2(rb.velocity.x, jump);
+      //rb.AddForce((jump * Vector2.up) * 2, ForceMode2D.Impulse);
       jumpsLeft--;
-
       inAir = true;
+    }
+
+    //? Längre hopp ju längre man håller
+    if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+    {
+      // ?Direkt movement, ingen force
+      rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
     }
   }
 
   private void DashCheck()
   {
-
-    Vector2 dashOffset = new Vector2(rb.position.x + dashSpeed, rb.position.y);
-    Vector2 negativeDashOffset = new Vector2(rb.position.x - dashSpeed, rb.position.y);
-    Vector2 downDashOffset = new Vector2(rb.position.x, rb.position.y - (dashSpeed * 0.5f));
-
-    if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.A) && dashLeft > 0 && inAir || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.A) && dashLeft > 0 && inAir)
+    if (Input.GetKey(KeyCode.LeftShift) && canDash)
     {
-
-      rb.MovePosition(rb.position + negativeDashOffset * 10f * Time.deltaTime);
-
-      // rb.AddForce((dashSpeed * Vector2.left) * 3, ForceMode2D.Impulse);
-      isDashing = true;
-      dashLeft--;
-    }
-
-    // ?Går genom marken
-    else if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.S) && dashLeft > 0 && inAir || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.S) && inAir && dashLeft > 0)
-    {
-      rb.MovePosition(rb.position + downDashOffset * 10f * Time.deltaTime);
-      // rb.AddForce((dashSpeed * Vector2.down) * 3, ForceMode2D.Impulse);
-
-      dashLeft--;
-      isDashing = true;
-    }
-
-    else if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.D) && dashLeft > 0 && inAir || Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.D) && dashLeft > 0 && inAir)
-    {
-      rb.MovePosition(rb.position + dashOffset * 10f * Time.deltaTime);
-      // rb.AddForce((dashSpeed * Vector2.right) * 3, ForceMode2D.Impulse);
-
-      dashLeft--;
-      isDashing = true;
+      StartCoroutine(Dash());
     }
 
   }
 
-  private void FallingSpeedCheck()
-  {
-    fallingFast = (rb.velocity.y > jumpingSpeedThreshold) ? false : true;
-  }
-
-  // !Strech and squash
-  private void ResizePlayerJump()
-  {
-    if (!fallingFast && !isDashing)
-    {
-      transform.localScale = Vector3.Lerp(transform.localScale, ScalePeak, scalingRate * Time.deltaTime);
-    }
-
-    else if (fallingFast && !isDashing)
-    {
-      transform.localScale = Vector3.Lerp(transform.localScale, ScaleDown, scalingRate * Time.deltaTime);
-    }
-
-
-    // !Scalar tillbaka spelaren till normalt
-    if (!inAir)
-    {
-      transform.localScale = Vector3.Lerp(transform.localScale, ScaleNormal, 7f * Time.deltaTime);
-    }
-
-  }
-
-  private void checkHp()
+  private void CheckHp()
   {
     if (health <= 0)
     {
       Destroy(this.gameObject);
     }
+  }
+
+  private IEnumerator Dash()
+  {
+    canDash = false;
+    isDashing = true;
+    float ogGravity = rb.gravityScale;
+    rb.gravityScale = 0f;
+    rb.velocity = new Vector2(transform.localScale.x * -dashPower, 0f);
+    trail.emitting = true;
+    yield return new WaitForSeconds(dashingTime);
+    trail.emitting = false;
+    rb.gravityScale = ogGravity;
+    isDashing = false;
+    yield return new WaitForSeconds(dashCoolDown);
+    canDash = true;
   }
 
   private void OnTriggerEnter2D(Collider2D col)
@@ -192,15 +189,12 @@ public class PlayerMovement : MonoBehaviour
     if (col.gameObject.CompareTag("Ground"))
     {
       //! fix if on ground
-      jumpParticle.Play();
-      jumpPartDark.Play();
+      //jumpParticle.Play();
+      //jumpPartDark.Play();
 
       inAir = false;
-      fallingFast = false;
       jumpsLeft = maxJumps;
-      dashLeft = 1;
     }
-    // isDashing = false;
 
 
     if (col.gameObject.CompareTag("Enemy"))
@@ -209,7 +203,6 @@ public class PlayerMovement : MonoBehaviour
       //Destroy(col.gameObject);
       Debug.Log("hp: " + health);
       damagePart.Play();
-      fallingFast = false;
     }
   }
 }

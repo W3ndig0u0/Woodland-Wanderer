@@ -5334,12 +5334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ec093a1aa6b5f44be2fe0ed3412b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 20
-  deacceleration: -20
+  trail: {fileID: 0}
   maxJumps: 1
-  ScalePeak: {x: 0.9, y: 1.2, z: 1}
-  ScaleDown: {x: 1.1, y: 0.9, z: 1}
-  scalingRate: 8
+  groundCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &332568710
 SpriteRenderer:
   m_ObjectHideFlags: 0
