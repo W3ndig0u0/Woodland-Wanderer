@@ -31,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
   private ParticleSystem jumpPartDark;
   private ParticleSystem damagePart;
 
+  //!Animation
+  public Animator animation;
+
 
   private int coins = 0;
   private int health = 3;
@@ -41,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
   {
     //jumpParticle = GameObject.Find("JumpPart").GetComponent<ParticleSystem>();
     //jumpPartDark = GameObject.Find("JumpPartDark").GetComponent<ParticleSystem>();
-    //damagePart = GameObject.Find("DamagePart").GetComponent<ParticleSystem>();
+    damagePart = GameObject.Find("DamagePart").GetComponent<ParticleSystem>();
 
     rb = GetComponent<Rigidbody2D>();
     jumpsLeft = maxJumps;
@@ -56,11 +59,13 @@ public class PlayerMovement : MonoBehaviour
     {
       return;
     }
+
     PlayerSideMovement();
     JumpPlayer();
     DashCheck();
     Flip();
     movementX = Input.GetAxisRaw("Horizontal");
+    animation.SetFloat("Speed", Mathf.Abs(movementX));
   }
 
   void FixedUpdate()
@@ -75,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
     rb.velocity = new Vector2(movementX * moveSpeed, rb.velocity.y);
   }
 
+  //!VÄnder karaktären
   private void Flip()
   {
     if (isFacingRight && movementX < 0f || !isFacingRight && movementX > 0f)

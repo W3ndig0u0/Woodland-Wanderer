@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1cae095a1f24d874ca98df96b362b2f4
+guid: c106032f7e03048438279603baa433b8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,211 +105,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChikBoy_run_0
+      name: B_witch_run_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 288
-        width: 13
-        height: 30
+        x: 6
+        y: 342
+        width: 20
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4792f0bdaf0e12468dad90e78fd5618
-      internalID: 737997387
+      spriteID: cf9424a22d3024144a37592b524ef979
+      internalID: 1125499295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChikBoy_run_1
+      name: B_witch_run_1
       rect:
         serializedVersion: 2
-        x: 11
-        y: 259
-        width: 15
-        height: 28
+        x: 6
+        y: 294
+        width: 20
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e021ec9fd91613d439ad35188ebbd905
-      internalID: -521306908
+      spriteID: 0ffdead7b164f014c8a92acaf9f3dd11
+      internalID: 1108883672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChikBoy_run_2
+      name: B_witch_run_2
       rect:
         serializedVersion: 2
-        x: 10
-        y: 229
-        width: 17
-        height: 27
+        x: 6
+        y: 246
+        width: 20
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 724f80ed1f8afb742a78429bffbab1c0
-      internalID: 1845655263
+      spriteID: 169c204bd9bd96a4cb3af270920ad78c
+      internalID: -2094189515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChikBoy_run_3
+      name: B_witch_run_3
       rect:
         serializedVersion: 2
-        x: 10
-        y: 192
-        width: 17
-        height: 27
+        x: 6
+        y: 198
+        width: 19
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b03c93dddb81ee44f95c47b1b6db05ea
-      internalID: 164518266
+      spriteID: c749cd5e3b250dc4b97dcf2c2d36f30f
+      internalID: 661564954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChikBoy_run_4
+      name: B_witch_run_4
       rect:
         serializedVersion: 2
-        x: 11
-        y: 160
-        width: 15
-        height: 26
+        x: 6
+        y: 150
+        width: 20
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5eca060797b16d544879cb63f0c01558
-      internalID: 166279619
+      spriteID: de61682c3034d4f4d9753519fa865c6d
+      internalID: 192462140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChikBoy_run_5
+      name: B_witch_run_5
       rect:
         serializedVersion: 2
-        x: 9
-        y: 128
-        width: 16
-        height: 29
+        x: 6
+        y: 102
+        width: 20
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8954c43f6ebcaca4c9d9f1605acba35d
-      internalID: -818097097
+      spriteID: c96abfd8a13da0b47b4889cd8a0898bf
+      internalID: 404926493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChikBoy_run_6
+      name: B_witch_run_6
       rect:
         serializedVersion: 2
-        x: 10
-        y: 69
-        width: 15
-        height: 27
+        x: 6
+        y: 54
+        width: 20
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66c6d388b6501fe40bd11c427d7a18b2
-      internalID: 1007042218
+      spriteID: 50a2488b0fb383240939faf878fdbf3e
+      internalID: -329267058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChikBoy_run_7
+      name: B_witch_run_7
       rect:
         serializedVersion: 2
-        x: 10
-        y: 32
-        width: 17
-        height: 28
+        x: 6
+        y: 6
+        width: 19
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20e3e60fa7fc2fe489b3abec11088aa1
-      internalID: 581689097
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChikBoy_run_9
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 0
-        width: 16
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d0d92d03b23d41d419bb9ca21552ec50
-      internalID: 1652196574
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChikBoy_run_
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 100
-        width: 14
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1174e190286611b40884945b6fbda60c
-      internalID: 822092609
+      spriteID: bc4eb5380207bd342914d753403bb705
+      internalID: -1201740807
       vertices: []
       indices: 
       edges: []
@@ -325,16 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ChikBoy_run_: 822092609
-      ChikBoy_run_0: 737997387
-      ChikBoy_run_1: -521306908
-      ChikBoy_run_2: 1845655263
-      ChikBoy_run_3: 164518266
-      ChikBoy_run_4: 166279619
-      ChikBoy_run_5: -818097097
-      ChikBoy_run_6: 1007042218
-      ChikBoy_run_7: 581689097
-      ChikBoy_run_9: 1652196574
+      B_witch_run_0: 1125499295
+      B_witch_run_1: 1108883672
+      B_witch_run_2: -2094189515
+      B_witch_run_3: 661564954
+      B_witch_run_4: 192462140
+      B_witch_run_5: 404926493
+      B_witch_run_6: -329267058
+      B_witch_run_7: -1201740807
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
