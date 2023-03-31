@@ -205,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
 
     if (col.gameObject.CompareTag("Enemy"))
     {
-      health--;
+      //health--;
       //Destroy(col.gameObject);
       Debug.Log("hp: " + health);
       damagePart.Play();
