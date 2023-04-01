@@ -8,7 +8,7 @@ public class Parallax : MonoBehaviour
 
   private float length;
   private float startPosition;
-  public GameObject camera;
+  public new GameObject camera;
   public float paraleaxEffect;
   public float smoothness = 3.0f;
 

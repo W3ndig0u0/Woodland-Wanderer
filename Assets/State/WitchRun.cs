@@ -6,7 +6,7 @@ public class WitchRun : StateMachineBehaviour
   private Transform player;
   private Rigidbody2D rb;
   private float speed = 1.5f;
-  private float playerRange = 20f;
+  private float playerRange = 10f;
   EnemyFlip enemyFlip;
 
   override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

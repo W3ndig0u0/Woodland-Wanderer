@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
   // !Dash
   private float dashPower = 17f;
   private float dashingTime = 0.2f;
-  private float dashCoolDown = 1f;
+  private float dashCoolDown = 0.7f;
   private bool isDashing = false;
   private bool canDash = true;
   [SerializeField] private TrailRenderer trail;
@@ -26,26 +26,12 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField] private Transform groundCheck;
   [SerializeField] private LayerMask groundLayer;
 
-  //!Particle
-  private ParticleSystem jumpParticle;
-  private ParticleSystem jumpPartDark;
-  private ParticleSystem damagePart;
-
   //!Animation
   public Animator animation;
-
-
-  private int coins = 0;
-  private int health = 3;
-
   private Rigidbody2D rb;
 
   void Start()
   {
-    //jumpParticle = GameObject.Find("JumpPart").GetComponent<ParticleSystem>();
-    //jumpPartDark = GameObject.Find("JumpPartDark").GetComponent<ParticleSystem>();
-    damagePart = GameObject.Find("DamagePart").GetComponent<ParticleSystem>();
-
     rb = GetComponent<Rigidbody2D>();
     jumpsLeft = maxJumps;
   }
@@ -53,8 +39,6 @@ public class PlayerMovement : MonoBehaviour
 
   void Update()
   {
-    CheckHp();
-
     if (isDashing)
     {
       return;
@@ -153,14 +137,6 @@ public class PlayerMovement : MonoBehaviour
 
   }
 
-  private void CheckHp()
-  {
-    if (health <= 0)
-    {
-      Destroy(this.gameObject);
-    }
-  }
-
   private IEnumerator Dash()
   {
     canDash = false;
@@ -177,38 +153,16 @@ public class PlayerMovement : MonoBehaviour
     canDash = true;
   }
 
-  private void OnTriggerEnter2D(Collider2D col)
-  {
-    if (col.gameObject.CompareTag("Coin"))
-    {
-      coins++;
-      Destroy(col.gameObject);
-      Debug.Log("money: " + coins);
-    }
-  }
-
-
   // !Reset when landing
   void OnCollisionEnter2D(Collision2D col)
   {
-
     if (col.gameObject.CompareTag("Ground"))
     {
-      //! fix if on ground
       //jumpParticle.Play();
       //jumpPartDark.Play();
 
       inAir = false;
       jumpsLeft = maxJumps;
-    }
-
-
-    if (col.gameObject.CompareTag("Enemy"))
-    {
-      //health--;
-      //Destroy(col.gameObject);
-      Debug.Log("hp: " + health);
-      damagePart.Play();
     }
   }
 }
