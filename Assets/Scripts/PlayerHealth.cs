@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
 
-
   private int health;
   private int maxHealth = 3;
   public HealthBar healthBar;
+  public AudioClip audio;
 
   void Start()
   {
@@ -29,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
       health--;
       //Destroy(col.gameObject);
       healthBar.SetHealth(health);
+      AudioSource.PlayClipAtPoint(audio, this.gameObject.transform.position);
 
       Debug.Log("hp: " + health);
     }

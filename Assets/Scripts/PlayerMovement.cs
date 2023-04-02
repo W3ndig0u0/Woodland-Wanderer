@@ -25,9 +25,10 @@ public class PlayerMovement : MonoBehaviour
   private bool inAir = false;
   [SerializeField] private Transform groundCheck;
   [SerializeField] private LayerMask groundLayer;
+  [SerializeField] private AudioClip jumpAudio;
 
   //!Animation
-  public Animator animation;
+  public new Animator animation;
   private Rigidbody2D rb;
 
   void Start()
@@ -96,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     // !Bromsar spelaren när den vänder
     if (!inAir && Mathf.Abs(movementX) < 0.01f)
     {
-      float amount = Mathf.Min(Mathf.Abs(rb.velocity.x), MathF.Abs(0.3f));
+      float amount = Mathf.Min(Mathf.Abs(rb.velocity.x), MathF.Abs(0.2f));
       amount *= MathF.Sign(rb.velocity.x);
       rb.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
     }
@@ -113,9 +114,9 @@ public class PlayerMovement : MonoBehaviour
 
     if (Input.GetButtonDown("Jump") && jumpsLeft > 0 && isGrounded())
     {
-      // ?Direkt movement, ingen force
       rb.velocity = new Vector2(rb.velocity.x, jump);
       //rb.AddForce((jump * Vector2.up) * 2, ForceMode2D.Impulse);
+      AudioSource.PlayClipAtPoint(jumpAudio, this.gameObject.transform.position);
       jumpsLeft--;
       inAir = true;
     }
@@ -123,7 +124,6 @@ public class PlayerMovement : MonoBehaviour
     //? Längre hopp ju längre man håller
     if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
     {
-      // ?Direkt movement, ingen force
       rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
     }
   }

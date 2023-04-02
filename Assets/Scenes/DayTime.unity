@@ -8293,6 +8293,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  jumpAudio: {fileID: 0}
   animation: {fileID: 1649751575}
 --- !u!61 &1649751578
 BoxCollider2D:

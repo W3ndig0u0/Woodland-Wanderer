@@ -5340,6 +5340,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  jumpAudio: {fileID: 0}
   animation: {fileID: 0}
 --- !u!212 &332568710
 SpriteRenderer:
