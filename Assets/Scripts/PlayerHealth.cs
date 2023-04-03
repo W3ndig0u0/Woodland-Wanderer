@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
   private int health;
-  private int maxHealth = 3;
+  private int maxHealth = 100;
   public HealthBar healthBar;
   public AudioClip audio;
 
@@ -21,19 +21,16 @@ public class PlayerHealth : MonoBehaviour
     CheckHp();
   }
 
+  public void damagePlayer(int damage)
+  {
+    health -= damage;
+    healthBar.SetHealth(health);
+    AudioSource.PlayClipAtPoint(audio, this.gameObject.transform.position);
+  }
+
   // !Reset when landing
   void OnCollisionEnter2D(Collision2D col)
   {
-    if (col.gameObject.CompareTag("Enemy"))
-    {
-      health--;
-      //Destroy(col.gameObject);
-      healthBar.SetHealth(health);
-      AudioSource.PlayClipAtPoint(audio, this.gameObject.transform.position);
-
-      Debug.Log("hp: " + health);
-    }
-
     if (col.gameObject.CompareTag("Killzone"))
     {
       health -= maxHealth;
@@ -46,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
   {
     if (health <= 0)
     {
-      Application.LoadLevel(Application.loadedLevel);
+      //Application.LoadLevel(Application.loadedLevel);
     }
   }
 

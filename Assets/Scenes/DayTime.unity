@@ -8287,7 +8287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ec093a1aa6b5f44be2fe0ed3412b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trail: {fileID: 1649751576}
   maxJumps: 1
   groundCheck: {fileID: 1714015540}
   groundLayer:

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4a59f8a8f86618640bf91b5fb851a037
+guid: f50565f67da347d41b2e62c465c15783
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,388 +105,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: itch jump sheet-Sheet_0
+      name: HoodJump_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 21
-        width: 19
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 97ec3de9a06bece4b958615eb014a271
-      internalID: -1173658989
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 21
-        width: 14
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a347b33c797d20443b6f587e4d1fd617
-      internalID: -2110655938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 185
-        y: 21
-        width: 13
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eedc0cb4815ccb743b97846354c4baa1
-      internalID: 1526622340
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 264
-        y: 21
-        width: 14
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93332a98bed6dba4f9e41030adf4d54d
-      internalID: 466686415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 342
-        y: 22
-        width: 15
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7f6a88f8971d3b4782d8d65ceca7a6f
-      internalID: 495171201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 419
-        y: 23
-        width: 22
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a9ac2fb2db56f747b4ddc3cc2bc6947
-      internalID: -608830314
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 498
-        y: 24
-        width: 24
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25b7e02beb622b6429c9c098cca42dde
-      internalID: 1080255954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 578
-        y: 25
-        width: 25
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 378eb455e2e645f4ea6cacbb07385aea
-      internalID: 705836415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 658
-        y: 25
-        width: 25
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8bbbae05230ea85448d0e925d9e3b432
-      internalID: 1154220851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 738
-        y: 23
-        width: 26
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7a6b209da55e364bac3e59bb501e1ea
-      internalID: 440539779
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 818
-        y: 22
-        width: 25
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a992e706323d5041ae51adf69e5778e
-      internalID: -423167579
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 899
-        y: 22
-        width: 24
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87c263d6f9fc7934582cb09854bd261d
-      internalID: -91592957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_12
-      rect:
-        serializedVersion: 2
-        x: 978
-        y: 21
-        width: 25
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 312baba60ba3e5d4fae547fb6b0ba32c
-      internalID: 1944459026
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_13
-      rect:
-        serializedVersion: 2
-        x: 1058
-        y: 21
-        width: 25
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da95132955c3f0d48a9cd09d11abeda2
-      internalID: -344558875
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_14
-      rect:
-        serializedVersion: 2
-        x: 1138
-        y: 21
-        width: 25
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4acc3f620e760f54e983f8612e2f54e5
-      internalID: -1822033264
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_15
-      rect:
-        serializedVersion: 2
-        x: 1219
-        y: 21
-        width: 23
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc487cf99eb0621478c107c87916a4bb
-      internalID: 2085215298
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_16
-      rect:
-        serializedVersion: 2
-        x: 1302
-        y: 21
-        width: 23
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76042786f3e390c40bf182bdc6407ab8
-      internalID: -1352568744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_17
-      rect:
-        serializedVersion: 2
-        x: 1383
-        y: 21
-        width: 18
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e4fa60c63e4d3c42ae1470336fd8fa1
-      internalID: -1047465449
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch jump sheet-Sheet_18
-      rect:
-        serializedVersion: 2
-        x: 1460
+        x: 44
         y: 21
         width: 16
         height: 31
@@ -497,8 +119,386 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ed2b8c2657cbd54b8ef614ece5179a0
-      internalID: -41018213
+      spriteID: 03d66633a3dfc94409cf7acd1a030c7c
+      internalID: 1560908683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 21
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a4276a0e1e2184fb889f81faeb3290
+      internalID: -1105026280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_2
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 21
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4423dce12a4d8704cb48cc951d868672
+      internalID: 1219598635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_3
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 21
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f180424a9f2e4c04082611b2d6f93427
+      internalID: 2062738071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_4
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 21
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a87554d2595b98a45b7b0aa2904e9f93
+      internalID: -1907327473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_5
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 21
+        width: 25
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c79e96564e51549408ff2a9441457269
+      internalID: 608509820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_6
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 21
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96db364b140709c49a5dd6813bc2eada
+      internalID: -1676239238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_7
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 22
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41bafb320e2a70246a8efc1e961f72ac
+      internalID: -983429149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_8
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 22
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b917130fe812ab64182e53bc8c63242c
+      internalID: -539935452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_9
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 23
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 997547311ca6da14c96e946261a202fd
+      internalID: 1226408990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_10
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 25
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35c8a10944637e8489d99793852cfa6b
+      internalID: 1704073179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_11
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 25
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22658e0171739846af666417bed174a
+      internalID: -1966411817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_12
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 24
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88cbf51736e03df4085253a52cdb0d85
+      internalID: 1922911361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_13
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 23
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 313209c0b473030488905e86751da797
+      internalID: 834999523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_14
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 22
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a615bbfb0c521a84c836f4fdf76fb994
+      internalID: -426221503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_15
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 21
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c2341a598f09a3478f01cf96fd932ce
+      internalID: -1695847893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_16
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 21
+        width: 13
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b5fbd817c8e31349bd77b2f4ce679b4
+      internalID: 559789733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_17
+      rect:
+        serializedVersion: 2
+        x: 1402
+        y: 21
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511652436c5147f40b5504b660f9289f
+      internalID: 1138746137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HoodJump_18
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 21
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ee4f4b5b1b1e549b5d892ea776d3cc
+      internalID: -793005316
       vertices: []
       indices: 
       edges: []
@@ -514,25 +514,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      itch jump sheet-Sheet_0: -1173658989
-      itch jump sheet-Sheet_1: -2110655938
-      itch jump sheet-Sheet_10: -423167579
-      itch jump sheet-Sheet_11: -91592957
-      itch jump sheet-Sheet_12: 1944459026
-      itch jump sheet-Sheet_13: -344558875
-      itch jump sheet-Sheet_14: -1822033264
-      itch jump sheet-Sheet_15: 2085215298
-      itch jump sheet-Sheet_16: -1352568744
-      itch jump sheet-Sheet_17: -1047465449
-      itch jump sheet-Sheet_18: -41018213
-      itch jump sheet-Sheet_2: 1526622340
-      itch jump sheet-Sheet_3: 466686415
-      itch jump sheet-Sheet_4: 495171201
-      itch jump sheet-Sheet_5: -608830314
-      itch jump sheet-Sheet_6: 1080255954
-      itch jump sheet-Sheet_7: 705836415
-      itch jump sheet-Sheet_8: 1154220851
-      itch jump sheet-Sheet_9: 440539779
+      HoodJump_0: 1560908683
+      HoodJump_1: -1105026280
+      HoodJump_10: 1704073179
+      HoodJump_11: -1966411817
+      HoodJump_12: 1922911361
+      HoodJump_13: 834999523
+      HoodJump_14: -426221503
+      HoodJump_15: -1695847893
+      HoodJump_16: 559789733
+      HoodJump_17: 1138746137
+      HoodJump_18: -793005316
+      HoodJump_2: 1219598635
+      HoodJump_3: 2062738071
+      HoodJump_4: -1907327473
+      HoodJump_5: 608509820
+      HoodJump_6: -1676239238
+      HoodJump_7: -983429149
+      HoodJump_8: -539935452
+      HoodJump_9: 1226408990
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

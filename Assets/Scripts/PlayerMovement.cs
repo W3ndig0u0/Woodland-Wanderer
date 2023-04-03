@@ -10,12 +10,7 @@ public class PlayerMovement : MonoBehaviour
   private bool isFacingRight = false;
 
   // !Dash
-  private float dashPower = 17f;
-  private float dashingTime = 0.2f;
-  private float dashCoolDown = 0.7f;
-  private bool isDashing = false;
-  private bool canDash = true;
-  [SerializeField] private TrailRenderer trail;
+  private PlayerSlide playerSlide;
 
 
   // !Jump
@@ -31,23 +26,33 @@ public class PlayerMovement : MonoBehaviour
   public new Animator animation;
   private Rigidbody2D rb;
 
+  private PlayerAttack playerAttack;
+  private float originalDrag;
+  private bool stopMovement;
+
   void Start()
   {
     rb = GetComponent<Rigidbody2D>();
     jumpsLeft = maxJumps;
+    playerAttack = GetComponent<PlayerAttack>();
+    playerSlide = GetComponent<PlayerSlide>();
+    originalDrag = rb.drag;
   }
-
 
   void Update()
   {
-    if (isDashing)
+    if (playerAttack.isAttacking)
+    {
+      return;
+    }
+
+    if (playerSlide.isDashing)
     {
       return;
     }
 
     PlayerSideMovement();
     JumpPlayer();
-    DashCheck();
     Flip();
     movementX = Input.GetAxisRaw("Horizontal");
     animation.SetFloat("Speed", Mathf.Abs(movementX));
@@ -56,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
   void FixedUpdate()
   {
 
-    if (isDashing)
+    if (playerSlide.isDashing || stopMovement)
     {
       return;
     }
@@ -64,6 +69,33 @@ public class PlayerMovement : MonoBehaviour
     // ?Direkt movement, ingen force
     rb.velocity = new Vector2(movementX * moveSpeed, rb.velocity.y);
   }
+
+  //!Reseta dragen efter attacken
+  public void ResetDrag()
+  {
+    rb.drag = originalDrag;
+    stopMovement = false;
+    moveSpeed = 2.5f;
+  }
+
+  public bool isGrounded()
+  {
+    return Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
+  }
+
+  //!Stoppa när man atteckerar
+  public void StopMovement()
+  {
+    rb.velocity = Vector2.zero;
+    rb.angularVelocity = 0f;
+    moveSpeed = 0f;
+    movementX = 0f;
+    animation.SetFloat("Speed", 0f);
+    rb.drag = 100000;
+    rb.MovePosition(transform.position);
+    stopMovement = true;
+  }
+
 
   //!VÄnder karaktären
   private void Flip()
@@ -77,23 +109,8 @@ public class PlayerMovement : MonoBehaviour
     }
   }
 
-  private bool isGrounded()
-  {
-    return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-  }
-
-
   private void PlayerSideMovement()
   {
-
-    // !movement med force
-    //float targetSpeed = movementX * moveSpeed;
-    //float speedDiff = targetSpeed - rb.velocity.x;
-    //float velocityPower = 1.20f;
-    //float accelerationSpeed = (Mathf.Abs(targetSpeed) > 0.05f) ? acceleration : deacceleration;
-    //float movementSpeed = Mathf.Pow(Mathf.Abs(speedDiff) * accelerationSpeed, velocityPower) * Mathf.Sign(speedDiff);
-    //rb.AddForce(movementSpeed * Vector2.right);
-
     // !Bromsar spelaren när den vänder
     if (!inAir && Mathf.Abs(movementX) < 0.01f)
     {
@@ -106,11 +123,6 @@ public class PlayerMovement : MonoBehaviour
 
   private void JumpPlayer()
   {
-
-    if (isDashing)
-    {
-      return;
-    }
 
     if (Input.GetButtonDown("Jump") && jumpsLeft > 0 && isGrounded())
     {
@@ -128,38 +140,12 @@ public class PlayerMovement : MonoBehaviour
     }
   }
 
-  private void DashCheck()
-  {
-    if (Input.GetKey(KeyCode.LeftShift) && canDash)
-    {
-      StartCoroutine(Dash());
-    }
-
-  }
-
-  private IEnumerator Dash()
-  {
-    canDash = false;
-    isDashing = true;
-    float ogGravity = rb.gravityScale;
-    rb.gravityScale = 0f;
-    rb.velocity = new Vector2(transform.localScale.x * -dashPower, 0f);
-    trail.emitting = true;
-    yield return new WaitForSeconds(dashingTime);
-    trail.emitting = false;
-    rb.gravityScale = ogGravity;
-    isDashing = false;
-    yield return new WaitForSeconds(dashCoolDown);
-    canDash = true;
-  }
 
   // !Reset when landing
   void OnCollisionEnter2D(Collision2D col)
   {
     if (col.gameObject.CompareTag("Ground"))
     {
-      //jumpParticle.Play();
-      //jumpPartDark.Play();
 
       inAir = false;
       jumpsLeft = maxJumps;
