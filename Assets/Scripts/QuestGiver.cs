@@ -32,8 +32,8 @@ public class QuestGiver : MonoBehaviour
   {
     enemyFlip = GetComponent<EnemyFlip>();
     questChoice = new string[4];
-    questChoice[0] = $"Thou hast not yet received a quest.";
-    questChoice[3] = $"Thou hast completed thine quest.";
+    questChoice[0] = $"You have yet to receive a quest.";
+    questChoice[3] = $"You have completed the quest. Go to the portal.";
 
     if (bossHp == null)
     {
@@ -85,7 +85,6 @@ public class QuestGiver : MonoBehaviour
     playerRecivedQuest = true;
     questChoice[1] = $"Collect {coinsToCollect} amount of gold.";
     questChoice[2] = $"Defeat the Evil Witch And Collect {coinsToCollect} amount of gold.";
-    Debug.Log(questChoice[questRecive]);
   }
 
   void QuestProgress()
