@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossHp : MonoBehaviour
 {
   public HealthBar healthBar;
+  public bool isAlive = true;
 
   public void UpdateHealthBar(int hp)
   {

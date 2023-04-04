@@ -19,6 +19,7 @@ public class EnemyFlip : MonoBehaviour
       transform.Rotate(0, 180f, 0f);
       isFlipped = false;
     }
+
     else if (transform.position.x < player.position.x && !isFlipped)
     {
       transform.localScale = flip;

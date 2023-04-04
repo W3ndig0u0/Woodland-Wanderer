@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
   private int health;
   private int maxHealth = 100;
   public HealthBar healthBar;
-  public AudioClip audio;
+  public new AudioClip audio;
 
   void Start()
   {
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
   void Update()
   {
     CheckHp();
+
   }
 
   public void damagePlayer(int damage)
@@ -29,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
   }
 
   // !Reset when landing
-  void OnCollisionEnter2D(Collision2D col)
+  void OnTriggerEnter2D(Collider2D col)
   {
     if (col.gameObject.CompareTag("Killzone"))
     {
@@ -43,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
   {
     if (health <= 0)
     {
-      //Application.LoadLevel(Application.loadedLevel);
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
   }
 

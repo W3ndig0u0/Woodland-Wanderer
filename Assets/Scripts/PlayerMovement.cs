@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
   private bool isFacingRight = false;
 
   // !Dash
-  private PlayerSlide playerSlide;
+  private PlayerDash playerDash;
 
 
   // !Jump
@@ -30,23 +30,33 @@ public class PlayerMovement : MonoBehaviour
   private float originalDrag;
   private bool stopMovement;
 
+  public Dialogue dialogue;
+  public PauseMenu pauseMenu;
+
   void Start()
   {
     rb = GetComponent<Rigidbody2D>();
     jumpsLeft = maxJumps;
     playerAttack = GetComponent<PlayerAttack>();
-    playerSlide = GetComponent<PlayerSlide>();
+    playerDash = GetComponent<PlayerDash>();
     originalDrag = rb.drag;
   }
 
   void Update()
   {
+    if (pauseMenu.isPaused || dialogue.talking)
+    {
+      StopMovement();
+      ResetDrag();
+      return;
+    }
+
     if (playerAttack.isAttacking)
     {
       return;
     }
 
-    if (playerSlide.isDashing)
+    if (playerDash.isDashing)
     {
       return;
     }
@@ -61,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
   void FixedUpdate()
   {
 
-    if (playerSlide.isDashing || stopMovement)
+    if (playerDash.isDashing || stopMovement)
     {
       return;
     }

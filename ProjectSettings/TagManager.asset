@@ -10,6 +10,7 @@ TagManager:
   - Killzone
   - HeavyAttack
   - LightAttack
+  - QuestGiver
   layers:
   - Default
   - TransparentFX

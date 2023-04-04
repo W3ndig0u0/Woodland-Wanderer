@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WitchSound : MonoBehaviour
 {
-  public new AudioClip chargeAudio;
-  public new AudioClip attackAudio;
+  public AudioClip chargeAudio;
+  public AudioClip attackAudio;
 
   public void PlayChargeSound()
   {

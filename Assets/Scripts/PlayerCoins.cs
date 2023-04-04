@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCoins : MonoBehaviour
 {
-  private int coins;
+  public int coins;
   public AmountCoins amountCoins;
 
   void Start()

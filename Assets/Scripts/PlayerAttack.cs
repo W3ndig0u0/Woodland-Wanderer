@@ -4,13 +4,12 @@ public class PlayerAttack : MonoBehaviour
 {
   private Animator animator;
   private float lastAttackTime = 0f;
-  private float comboTimeLimit = 0.5f;
   private float lightAttackCooldown = 0.5f;
   private float heavyAttackCooldown = 1.0f;
   public bool isAttacking = false;
 
   private PlayerMovement playerMovement;
-  private PlayerSlide playerSlide;
+  private PlayerDash playerDash;
 
   private bool heavyQueuedAttack = false;
   private bool lightQueuedAttack = false;
@@ -19,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
   private float lastHeavyAttackTime = 0f;
 
 
-  public new AudioClip heavyAttackAudio;
+  public AudioClip heavyAttackAudio;
 
   public int lightAttackDamage = 30;
   public int heavyAttackDamage = 120;
@@ -27,12 +26,15 @@ public class PlayerAttack : MonoBehaviour
   public Collider2D lightAttackHitBox;
   public Collider2D heavyAttackHitBox;
 
+  public Dialogue dialogue;
+  public PauseMenu pauseMenu;
+
 
   private void Start()
   {
     animator = GetComponent<Animator>();
     playerMovement = GetComponent<PlayerMovement>();
-    playerSlide = GetComponent<PlayerSlide>();
+    playerDash = GetComponent<PlayerDash>();
     HeavyAttackDone();
   }
 
@@ -52,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
       heavyQueuedAttack = true;
     }
 
-    if (!inAttackCooldown && !playerSlide.isDashing && lightQueuedAttack && Input.GetKeyDown(KeyCode.J) && playerMovement.isGrounded())
+    if (!pauseMenu.isPaused && !dialogue.talking && !inAttackCooldown && !playerDash.isDashing && lightQueuedAttack && Input.GetKeyDown(KeyCode.J) && playerMovement.isGrounded())
     {
       playerMovement.StopMovement();
       animator.SetTrigger("LightAttack");
@@ -63,7 +65,7 @@ public class PlayerAttack : MonoBehaviour
       inAttackCooldown = true;
     }
 
-    else if (!inAttackCooldown && !playerSlide.isDashing && heavyQueuedAttack && Input.GetKeyDown(KeyCode.K) && playerMovement.isGrounded())
+    else if (!pauseMenu.isPaused && !dialogue.talking && !inAttackCooldown && !playerDash.isDashing && heavyQueuedAttack && Input.GetKeyDown(KeyCode.K) && playerMovement.isGrounded())
     {
       playerMovement.StopMovement();
       animator.SetTrigger("HeavyAttack");

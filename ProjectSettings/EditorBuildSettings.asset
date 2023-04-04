@@ -5,10 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/First Level.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/TileMapTest.unity
+    path: Assets/Scenes/Menu.unity
+    guid: 1a8312d2bee1bb145998e17b53148bcb
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: bbcf8a00500f7694dac8ba797ec81406
+  - enabled: 1
+    path: Assets/Scenes/TutorialDash 1.unity
+    guid: 478f9f54b0ceaa547b234aeb80fc921c
+  - enabled: 1
+    path: Assets/Scenes/TutorialAttack.unity
+    guid: 3eef6c8aae2e6e34f926bab3441caa21
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: b9e77801af3215a43ad70cdec1f3fd4d
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
     guid: 5b7b05e1cc491274fb34fd258223cb74
+  - enabled: 1
+    path: Assets/Scenes/Gameover.unity
+    guid: 44639225ff99c24479795fa165acfaa7
   m_configObjects: {}

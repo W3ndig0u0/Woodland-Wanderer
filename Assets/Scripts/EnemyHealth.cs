@@ -13,11 +13,14 @@ public class EnemyHealth : MonoBehaviour
   public int damageToPlayer;
   private Rigidbody2D rb;
   private BossHp bossHp;
+  private Animator animator;
 
   void Start()
   {
     currentHealth = maxHealth;
     rb = GetComponent<Rigidbody2D>();
+    animator = GetComponent<Animator>();
+
     if (GetComponent<BossHp>() != null)
     {
       bossHp = GetComponent<BossHp>();
@@ -27,10 +30,17 @@ public class EnemyHealth : MonoBehaviour
 
   public void TakeDamage(int damage, float knockbackForce)
   {
+    animator.SetTrigger("Damaged");
     currentHealth -= damage;
     if (currentHealth <= 0)
     {
-      Destroy(gameObject);
+      if (bossHp != null)
+      {
+        bossHp.isAlive = false;
+      }
+
+      animator.SetBool("Dead", true);
+      Destroy(gameObject, 0.2f);
     }
 
     if (bossHp != null)
@@ -54,12 +64,12 @@ public class EnemyHealth : MonoBehaviour
     }
     else if (col.collider.CompareTag("HeavyAttack"))
     {
-      TakeDamage(playerAttack.heavyAttackDamage, 30f);
+      TakeDamage(playerAttack.heavyAttackDamage, 50f);
     }
 
     else if (col.collider.CompareTag("LightAttack"))
     {
-      TakeDamage(playerAttack.lightAttackDamage, 10f);
+      TakeDamage(playerAttack.lightAttackDamage, 20f);
     }
   }
 }
