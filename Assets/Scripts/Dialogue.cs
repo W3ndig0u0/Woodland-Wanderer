@@ -48,6 +48,7 @@ public class Dialogue : MonoBehaviour
       lines = new string[1];
       lines[0] = "emm, I do not have anything to say...";
     }
+    index = 0;
 
     text.text = lines[index];
 
@@ -56,7 +57,6 @@ public class Dialogue : MonoBehaviour
     gameObject.SetActive(true);
     panel.SetActive(true);
 
-    index = 0;
     StartCoroutine(TypeLine());
     talking = true;
   }
