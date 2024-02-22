@@ -15,5 +15,6 @@ public class Coins : MonoBehaviour
       playerCoins.AddCoins();
       AudioSource.PlayClipAtPoint(audio, this.gameObject.transform.position);
       Destroy(this.gameObject);
+    }
   }
 }
