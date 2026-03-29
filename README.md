@@ -13,6 +13,6 @@ Experience the game directly in your browser:
 *   **Smooth Performance**: Optimized for both web-GL and desktop builds.
 
 ## 🛠️ Tech Stack
-*   **Engine**: Unity 2D
+*   **Engine**: Unity
 *   **Language**: C#
 *   **Physics**: BoxCollider2D & Rigidbody2D implementation for tight collision.
